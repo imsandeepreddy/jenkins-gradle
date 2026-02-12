@@ -15,9 +15,10 @@ pipeline {
         }
         stage('Build & Test') {
             steps {
-                // Use the Gradle Wrapper to execute clean and build tasks
-                sh './gradlew clean build' // For Unix/Linux agents
-                // For Windows agents, use bat 'gradlew.bat clean build'
+                sh '''
+                  chmod +x gradlew
+                  ./gradlew clean build
+                '''
             }
         }
     }
